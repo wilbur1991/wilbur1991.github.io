@@ -1,23 +1,98 @@
----
-layout: default
----
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+</head>
 
-<div class="home">
+<body>
+<audio  id="music" preload="auto" src="http://oai6uz8o4.bkt.clouddn.com/Darin%20-%20Can%27t%20Stop%20Love.mp3" controls autoplay>
+</audio>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* 宝贝,</span><br />
+				<span class="space"/><span class="comments">* 这是我送给你的礼物.</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"粪粪"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"花花"</span>);<br />
+				<span class="comments">//2015年12月24日, 我们第一次相遇 </span><br />
+				i.met(u);<br/>
+				<span class="comments">//去动物园，去看电影</span><br />
+				i.playWith(u);<br />
+				<span class="comments">//去买枣糕喂你</span><br />
+				i.buyZaogaoWei(u);<br />
+				<span class="comments">//然后，我们在一起</span><br />
+				i.love(u);<br />
+				u.love(i):<br/>
+				<span class="comments">//有时候我惹你生气</span><br />
+				u.beAngryWith(i);<br />
+				<span class="comments">//it's on me，但我不是有意</span><br />
+				i.sorry();<br />
+				<span class="comments">//相信我宝贝，我一直都爱你</span><br />
+				u.believeIn(i);<br />
+				<span class="comments">//我们的故事也将一直继续</span><br />
+				inIoveForever(i,u);
 
-  <h1 class="page-heading">博客</h1>
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						<span class="placeholder">花花，我们已经在一起</span>
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Love you forever.<br/>
+						<div class="signature">- 爱你的粪粪</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2015, 12, 24);
+		together.setHours(18);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 35000);
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 2000);
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>
